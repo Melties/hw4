@@ -2,10 +2,16 @@ import java.util.Scanner;
 
 public class Task5 {
     public static void main(String[] args) {
-        int sizeOfMatrix = 0;
         Scanner in = new Scanner(System.in);
         System.out.println("Enter the number of rows and columns in your matrix: ");
-        sizeOfMatrix = in.nextInt();
+        String size = in.nextLine();
+        int sizeOfMatrix;
+        if(size.matches("[-+]?\\d+")) {
+            sizeOfMatrix = Integer.parseInt(size);
+        } else {
+            System.out.println("Invalid input, please, enter integer number");
+            sizeOfMatrix = in.nextInt();
+        }
         int firstMatrix[][] = new int[sizeOfMatrix][sizeOfMatrix];
         int secondMatrix[][] = new int[sizeOfMatrix][sizeOfMatrix];
         int sumMatrix[][] = new int[sizeOfMatrix][sizeOfMatrix];
@@ -13,13 +19,23 @@ public class Task5 {
         System.out.println("Enter the first matrix");
         for(int i = 0; i < sizeOfMatrix; i++){
             for(int j = 0; j < sizeOfMatrix; j++){
-                firstMatrix[i][j] = in.nextInt();
+                String input = in.nextLine();
+                if(input.matches("[-+]?\\d+")) {
+                    firstMatrix[i][j] = Integer.parseInt(input);
+                } else {
+                    System.out.println("INVALID input");
+                }
             }
         }
         System.out.println("Enter the second matrix");
         for(int i = 0; i < sizeOfMatrix; i++){
             for(int j = 0; j < sizeOfMatrix; j++){
-                secondMatrix[i][j] = in.nextInt();
+                String input = in.nextLine();
+                if(input.matches("[-+]?\\d+")) {
+                    secondMatrix[i][j] = Integer.parseInt(input);
+                } else {
+                    System.out.println("INVALID input");
+                }
             }
         }
         System.out.println("First Matrix:");
