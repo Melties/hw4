@@ -1,28 +1,22 @@
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class Task3 {
     public static void main(String[] args) {
-        int[] array = new int[100];
-        int i = 0;
+        List<Integer> array = new ArrayList<>();
         Scanner in = new Scanner(System.in);
-        String input = "";
-        while(!input.equals("stop")) {
-            input = in.nextLine();
-            array[0] = Integer.valueOf(input);
-            i++;
-            if(input.equals("status")) {
-                Arrays.sort(array);
-                System.out.println("\nSorted array is: ");
-                for (int num : array) {
-                    System.out.print(num + " ");
+        while(true) {
+            String input = in.nextLine();
+            if(input.equals("stop")) {
+                break;
+            } else if (input.matches("[-+]?\\d+")) {
+                array.add(Integer.parseInt(input));
+            } else if (input.equals("status")) {
+                Collections.sort(array);
+                for(int i = 0; i < array.size(); i++) {
+                    System.out.print(array.get(i) + " ");
                 }
             }
         }
         in.close();
     }
 }
-//    Необходимо реализовать программу, которая будет считывать
-//        числа, введенные пользователем, пока пользователь не введет
-//        "stop" слово. по команде "status" необходимо вывести введенные
-//        цифры в отсортированном виде (от меньшего к большему).
